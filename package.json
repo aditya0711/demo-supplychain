@@ -1,13 +1,15 @@
 {
-  "name": "demo",
+  "name": "Demo",
   "version": "1.0.1",
   "description": "BlockApps REST Demo App",
   "main": "demoapp.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "apidoc -i server/api/v1/ -o doc/ && nodemon server/server.js",
-    "start:back": "node server/server.js > stdout.txt 2> stderr.txt &",
-    "deploy": "cp config/$NODE.config.yaml config.yaml && ./node_modules/mocha/bin/mocha lib/deploy.test.js -b && ./node_modules/mocha/bin/mocha lib/test/setup.test.js && cp config/$NODE.deploy.yaml deploy.yaml"
+    "test": "echo \"Error: no test specified\" && exit 1 && react-scripts test --env=jsdom",
+    "start": "apidoc -i server/api/v1/ -o doc/ && nodemon server/server.js && react-scripts start ",
+    "start:back": "node server/server.js > stdout.txt 2> stderr.txt",
+    "eject": "react-scripts eject",
+    "build": "react-scripts build",
+    "deploy": "cp config/bayar3.config.yaml config.yaml && ./node_modules/mocha/bin/mocha lib/deploy.test.js -b && ./node_modules/mocha/bin/mocha lib/test/setup.test.js && cp config/bayar3.deploy.yaml deploy.yaml"
   },
   "repository": {
     "type": "git",
@@ -22,13 +24,21 @@
   "dependencies": {
     "blockapps-rest": "git+https://github.com/blockapps/blockapps-rest#develop",
     "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
     "express": "^4.14.0",
-    "nodemon": "^1.11.0"
+    "fixed-data-table": "^0.6.3",
+    "jquery": "^3.1.1",
+    "node-uuid": "^1.4.7",
+    "nodemon": "^1.11.0",
+    "react": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
+    "react-dom": "^15.4.2"
   },
   "devDependencies": {
     "apidoc": "^0.16.1",
     "chai": "^3.2.0",
     "chai-http": "^1.0.0",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "react-scripts": "0.9.0"
   }
 }

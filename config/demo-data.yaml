@@ -21,3 +21,17 @@ store:
         - http://blockapps.net/images/header_logo.png?2_2
         - http://blockapps.net/images/header_logo.png?2_3
         - http://blockapps.net/images/header_logo.png?2_4
+product:
+  - id: 'd8e2deb4-f3f2-11e6-bc64-92361f002671'
+    name: 'Chair'
+    description: 'A chair with 4 legs'
+    manufacturingLocation: 'Singapore'
+    manufacturingDate: '01-01-2017'
+  - id: 'e22a527c-f3f2-11e6-bc64-92361f002671'
+    name: 'Table'
+    description: 'A Table with 4 legs'
+    manufacturingLocation: 'India'
+    manufacturingDate: '28-02-2017'
+
+
+

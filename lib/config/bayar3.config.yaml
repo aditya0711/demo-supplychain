@@ -1,0 +1,16 @@
+apiDebug: false
+password: '1234'
+timeout: 20000
+contractsPath: ../../../contracts/
+dataFilename: config/demo-data.yaml
+deployFilename: config/bayar3.deploy.yaml
+
+# WARNING - extra strict syntax
+# DO NOT change the nodes order
+# node 0 is the default url for all single node api calls
+nodes:
+   - id: 0
+      explorerUrl: 'http://bayar3.eastus.cloudapp.azure.com:9000'
+      stratoUrl: 'http://bayar3.eastus.cloudapp.azure.com/strato-api'
+      blocUrl: 'http://bayar3.eastus.cloudapp.azure.com/bloc'
+      searchUrl: 'http://bayar3.eastus.cloudapp.azure.com/cirrus'
