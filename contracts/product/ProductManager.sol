@@ -4,12 +4,13 @@ import "../enums/ErrorCodes.sol";
 /* Manufacturer data*/
 
 
-contract ProductManager is ProductType,ErrorCodes{
+contract ProductManager is ErrorCodes,ProductType{
 
  Product[] products;
  mapping (string => uint) productList;
 
 function ProductManager() {
+    products.length=1;
 
   }
 
