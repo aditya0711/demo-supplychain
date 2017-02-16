@@ -48,15 +48,5 @@ Smart contract tests
 `http://localhost:3000/`
 
 ## Implemented
-* create user `/api/v1/users/:username`
-* login `/api/v1/users/validate`
-* get user history `/api/v1/users/history`
-* get user balance `/api/v1/users/balance`
-* reward user `/api/v1/users/reward`
-* redeem user `/api/v1/users/redeem`
-* revoke user `/api/v1/users/revoke`
-* get store items `/api/v1/store`
-* get store item by contract Address `/api/v1/store`
-
 * add a new product `/api/v1/product/create`
 
