@@ -9,7 +9,16 @@
 ## Project setup
 
 ### Installation
-`npm i`
+
+inside folder that contains `package.json`. 
+`npm install` 
+`npm update`
+`react-scripts build`
+
+`$NODE=bayar3 && npm start`
+
+If `react-scripts build` is unavailable, install it globally with `sudo npm install -g react-scripts`.
+The node application runs on port 3001, and React application runs on port 3000. However if `npm start` doesn't start both the React app and the Node app, open another terminal and run `react-scripts start`. 
 
 ### Deployment
 * In the folder `./config`, create a config file for the target Blockapps server
@@ -35,10 +44,6 @@ Smart contract tests
 
 `mocha lib/test/`
 
-Rewards API tests
-
-`mocha server/api/v1/test`
-
 ## View API documentation
 `http://localhost:3000/`
 
@@ -52,3 +57,6 @@ Rewards API tests
 * revoke user `/api/v1/users/revoke`
 * get store items `/api/v1/store`
 * get store item by contract Address `/api/v1/store`
+
+* add a new product `/api/v1/product/create`
+
