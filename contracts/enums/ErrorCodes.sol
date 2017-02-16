@@ -10,6 +10,7 @@ contract ErrorCodes {
         NOT_FOUND,
         USERNAME_EXISTS,
         STOREITEM_EXISTS,
-        INSUFFICIENT_BALANCE
+        INSUFFICIENT_BALANCE,
+        PRODUCT_EXISTS
     }
 }

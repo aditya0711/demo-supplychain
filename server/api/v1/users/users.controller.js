@@ -33,17 +33,21 @@ const ms = require(`${path.join(process.cwd(), libPath)}/demoapp`)(config.contra
  *       "error": "Users Not Found"
  *     }
  */
-exports.getUsers = (req, res) => {
-  const deploy = req.app.get('deploy');
-  const searchTerm = req.query.term;
+
+
+exports.getUsers = function(req, res)
+{
+    const deploy = req.app.get('deploy');
+    const searchTerm = req.query.term;
+
+    console.log("DEPLOY OBJ: " + deploy + "SearchTerm: " + searchTerm);
 
   ms.setScope()
     .then(ms.setAdmin(deploy.adminName, deploy.adminPassword, deploy.AdminInterface.address))
     .then(ms.getUsers(deploy.adminName, searchTerm))
-    .then(scope => {
-      util.response.status200(res, {users: scope.userList});
-    })
-    .catch(err => {
+      .then(function(scope){
+          util.response.status200(res, {users: scope.userList});
+      })    .catch(function(err)  {
       util.response.status500(res, err);
     });
 }

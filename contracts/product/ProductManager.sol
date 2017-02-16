@@ -1,22 +1,29 @@
-
 import "./Product.sol";
 import "../enums/ProductType.sol";
+import "../enums/ErrorCodes.sol";
 /* Manufacturer data*/
 
 
-contract ProductManager is ProductType{
+contract ProductManager is ProductType,ErrorCodes{
 
  Product[] products;
  mapping (string => uint) productList;
 
 function ProductManager() {
-   
+
   }
- function addProduct(string _id, string _name,string _description, string _manufacturingDate,string  _manufacturingLocation) returns (address){
+
+  function exists(string _id) returns (bool) {
+      return productList[_id] != 0;
+    }
+
+ function addProduct(string _id, string _name,string _description, string _manufacturingDate,string  _manufacturingLocation) returns (ErrorCodesEnum){
+  // fail if _id exists
+  if (exists(_id)) return ErrorCodesEnum.PRODUCT_EXISTS;
   uint index=products.length;
   productList[_id]=index;
   products.push(new Product(_id,_name,_description,_manufacturingDate,_manufacturingLocation,ProductTypeEnum.PRODUCT));
-  return products[index];
+  return ErrorCodesEnum.SUCCESS;
  }
 
  function addComponent(string _id, string _name,string _description, string _manufacturingDate,string _manufacturingLocation,string _pid) returns (address){

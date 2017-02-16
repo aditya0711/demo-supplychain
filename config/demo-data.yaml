@@ -21,7 +21,7 @@ store:
         - http://blockapps.net/images/header_logo.png?2_2
         - http://blockapps.net/images/header_logo.png?2_3
         - http://blockapps.net/images/header_logo.png?2_4
-product:
+products:
   - id: 'd8e2deb4-f3f2-11e6-bc64-92361f002671'
     name: 'Chair'
     description: 'A chair with 4 legs'
