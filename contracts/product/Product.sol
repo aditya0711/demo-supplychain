@@ -12,7 +12,6 @@ import "../enums/ProductType.sol";
   ProductTypeEnum productType;
   Product[] componentList;
 
-
   function Product (string _id, string _name,string _description, string _manufacturingDate,string _manufacturingLocation,ProductTypeEnum _type) {
   id= _id;
   name = _name;
