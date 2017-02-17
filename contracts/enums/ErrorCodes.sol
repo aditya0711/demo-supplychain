@@ -11,6 +11,8 @@ contract ErrorCodes {
         USERNAME_EXISTS,
         STOREITEM_EXISTS,
         INSUFFICIENT_BALANCE,
-        PRODUCT_EXISTS
+        PRODUCT_EXISTS,
+        PRODUCT_NOT_EXISTS,
+        COMPONENT_EXISTS
     }
 }
