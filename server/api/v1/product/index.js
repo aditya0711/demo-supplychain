@@ -12,16 +12,13 @@ router.get('/', controller.getAllProducts);
 router.get('/:id', controller.getProduct);
 
 //info needed: timestamp, product name, components(which is a list of contract address of other producst), status
-router.post('/create', controller.create);
+router.post('/addProduct', controller.addProduct);
 
 //addComponent to a product
-router.post('/addProduct', controller.addComponent)
-
-//generate a unique ID for a new product
-//router.get('/uniqueID', controller.generateUniqueID);
+router.post('/addComponent/:productID', controller.addComponent)
 
 //get product history by product ID- unique ID
-router.get('/history/:id', controller.history);
+//router.get('/history/:id', controller.history);
 
 
 module.exports = router;

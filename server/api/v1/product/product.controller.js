@@ -13,24 +13,25 @@ const libPath = './lib';
 const ms = require(`${path.join(process.cwd(), libPath)}/demoapp`)(config.contractsPath); // FIXME move to package
 var uuid = require('node-uuid');
 
-
-exports.create = create;
-exports.history = history;
+exports.addProduct = addProduct;
+//exports.history = history;
 exports.getAllProducts = getAllProducts;
 exports.addComponent = addComponent;
 exports.getProduct  = getProduct;
 
-function create(req, res)  {
+
+
+function addProduct(req, res)  {
     const deploy = req.app.get('deploy');
     const data = req.body;
     console.log((data))
 
     var product = {};
-    product.id = data.id;
-    product.name = data.name;
-    product.description = data.description;
-    product.manufacturingDate = data.date;
-    product.manufacturingLocation = data.location;
+    product.id                      = data.id;
+    product.name                    = data.name;
+    product.description             = data.description;
+    product.manufacturingDate       = data.date;
+    product.manufacturingLocation   = data.location;
 
     console.log("Product ID: " + JSON.stringify(product.id) + deploy.adminName);
 
@@ -59,7 +60,7 @@ function addComponent(req, res)  {
     component.description = data.description;
     component.manufacturingDate = data.date;
     component.manufacturingLocation = data.location;
-    component.pid = data.product_contract_address;
+    component.pid = req.params.productID;
 
     console.log("Product ID: " + JSON.stringify(component.id) + deploy.adminName);
 
@@ -76,7 +77,30 @@ function addComponent(req, res)  {
             //util.response.status500(res, err);
         });
 }
-
+/**
+ * @api {get} /product/ Get all products in the system.
+ * @apiName GetProducts
+ * @apiGroup Product
+ *
+ *
+ * @apiSuccess {Object[]} List of all products.
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "success": true,
+ *       "data": {
+ *           products: [],
+ *        }
+ *     }
+ * @apiError Products not found in the system.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": false,
+ *       "error": "Products Not Found"
+ *     }
+ */
 function getAllProducts(req, res) {
     const deploy = req.app.get('deploy');
 
@@ -91,25 +115,66 @@ function getAllProducts(req, res) {
         util.response.status500(res, err);
     });
 }
-
+/**
+ * @api {get} /product/:id Get a Product in the system.
+ * @apiName GetProduct by productID (UniqueID)
+ * @apiGroup Product
+ *
+ *
+ * @apiSuccess {Object[]} Object of product.
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "success": true,
+ *       "data": {
+ *           product: {
+ *              name: "",
+ *              description: "",
+ *              manufacturingLocation: "",
+ *              manufacturingDate: "",
+ *              componentList: [],
+ *              productType: {}}
+ *        }
+ *     }
+ * @apiError Products not found in the system.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": false,
+ *       "error": "Product Not Found"
+ *     }
+ */
 function getProduct(req, res){
     const product_id = req.params.id;
-
-}
-
-function history(req, res) {
     const deploy = req.app.get('deploy');
-    const searchTerm = req.query.term;
 
     ms.setScope()
         .then(ms.setAdmin(deploy.adminName, deploy.adminPassword, deploy.AdminInterface.address))
-        .then(ms.getUsers(deploy.adminName, searchTerm))
-        .then(function(scope) {
-            util.response.status200(res, {users: scope.userList});
+        .then(ms.getProductState(deploy.adminName, product_id))
+        .then(function(scope){
+            util.response.status200(res, {product: scope.product[product_id]});
+            //res.json(scope.states['Products'])
         })
-        .catch(function(err) {
-            util.response.status500(res, err);
-        });
+        .catch(function(err){
+            console.log("asasdasdasd : " + err)
+        })
+
 }
+//#FIXME NOT YET IMPLEMENTED
+// function history(req, res) {
+//     const deploy = req.app.get('deploy');
+//     const searchTerm = req.query.term;
+//
+//     ms.setScope()
+//         .then(ms.setAdmin(deploy.adminName, deploy.adminPassword, deploy.AdminInterface.address))
+//         .then(ms.getUsers(deploy.adminName, searchTerm))
+//         .then(function(scope) {
+//             util.response.status200(res, {users: scope.userList});
+//         })
+//         .catch(function(err) {
+//             util.response.status500(res, err);
+//         });
+// }
 
 

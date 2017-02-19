@@ -50,5 +50,8 @@ Smart contract tests
 ## Implemented
 
 
-* add a new product `/api/v1/product/create`
+* add a new product `/api/v1/product/addProduct`
+* add a new component `/api/v1/product/addProduct/:productID`
+* get a product `/api/v1/product/:productID`
+* get list of products `/api/v1/product/`
 
