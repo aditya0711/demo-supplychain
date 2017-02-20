@@ -39,25 +39,25 @@ components:
     description: Fine teak wood
     manufacturingLocation: India
     manufacturingDate: 01-01-2017
-    product_contract_address: d8e2deb4-f3f2-11e6-bc64-92361f002671
+    productID: d8e2deb4-f3f2-11e6-bc64-92361f002671
   - id: bc64bc64-f3f2-11e6-bc64-92361f00f3f2
     name: Nails
     description: High tensile strength nails for furniture
     manufacturingLocation: India
     manufacturingDate: 28-02-2017
-    product_contract_address: d8e2deb4-f3f2-11e6-bc64-92361f002671
+    productID: d8e2deb4-f3f2-11e6-bc64-92361f002671
   - id: 45065b16-f4de-11e6-bc64-92361f002671
     name: Varnish
     description: High shine varnish for wood furniture
     manufacturingLocation: India
     manufacturingDate: 8-02-2017
-    product_contract_address: d8e2deb4-f3f2-11e6-bc64-92361f002671
+    productID: d8e2deb4-f3f2-11e6-bc64-92361f002671
   - id: 3b5ba83c-f4de-11e6-bc64-92361f002671
     name: Finisher
     description: Alcohol Finisher
     manufacturingLocation: India
     manufacturingDate: 28-12-2017
-    product_contract_address: d8e2deb4-f3f2-11e6-bc64-92361f002671
+    productID: d8e2deb4-f3f2-11e6-bc64-92361f002671
 
 
 

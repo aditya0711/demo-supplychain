@@ -51,7 +51,7 @@ Smart contract tests
 
 
 * add a new product `/api/v1/product/addProduct`
-* add a new component `/api/v1/product/addProduct/:productID`
+* add a new component `/api/v1/product/addProduct/:productAddress`
 * get a product `/api/v1/product/:productID`
 * get list of products `/api/v1/product/`
 

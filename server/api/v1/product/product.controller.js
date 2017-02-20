@@ -62,7 +62,7 @@ function addComponent(req, res)  {
     component.manufacturingLocation = data.location;
     component.pid = req.params.productID;
 
-    console.log("Product ID: " + JSON.stringify(component.id) + deploy.adminName);
+    console.log("Product ID: " + JSON.stringify(component.id) + deploy.adminName+"product id"+component.pid);
 
     ms.setScope()
         .then(ms.setAdmin(deploy.adminName, deploy.adminPassword, deploy.AdminInterface.address))
