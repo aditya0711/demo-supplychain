@@ -11,14 +11,16 @@ import "../enums/ProductType.sol";
   string manufacturingLocation;
   ProductTypeEnum productType;
   Product[] componentList;
+  string parentId;
 
-  function Product (string _id, string _name,string _description, string _manufacturingDate,string _manufacturingLocation,ProductTypeEnum _type) {
+  function Product (string _id, string _name,string _description, string _manufacturingDate,string _manufacturingLocation,ProductTypeEnum _type,string  _parentId) {
   id= _id;
   name = _name;
   description =  _description;
   manufacturingDate =  _manufacturingDate;
   manufacturingLocation = _manufacturingLocation;
   productType= _type;
+  parentId = _parentId;
  }
 
   function addComponent(Product product){
