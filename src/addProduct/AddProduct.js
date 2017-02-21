@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../common/logo.svg';
+import './addProduct.css';
 import $ from 'jquery';
 import uuid from 'node-uuid';
-
+import '../common/App.css';
 
 class AddProduct extends Component {
     constructor(props) {

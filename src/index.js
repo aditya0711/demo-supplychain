@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AddProduct from './AddProduct';
-import './index.css';
+import { Router, browserHistory } from 'react-router';
+import routes from './routes';
 
 ReactDOM.render(
-  <AddProduct />,
-  document.getElementById('root')
-
+    <Router routes={routes} history={browserHistory} />,
+    document.getElementById('root')
 );
