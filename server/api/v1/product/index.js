@@ -20,5 +20,8 @@ router.post('/addComponent/:productID', controller.addComponent)
 //get product history by product ID- unique ID
 //router.get('/history/:id', controller.history);
 
+//get parent product from component ID
+router.get('/component/:componentID',controller.getParentProduct);
+
 
 module.exports = router;

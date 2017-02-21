@@ -18,7 +18,7 @@ exports.addProduct = addProduct;
 exports.getAllProducts = getAllProducts;
 exports.addComponent = addComponent;
 exports.getProduct  = getProduct;
-
+exports.getParentProduct = getParentProduct;
 
 
 function addProduct(req, res)  {
@@ -159,6 +159,25 @@ function getProduct(req, res){
         .catch(function(err){
             console.log("asasdasdasd : " + err)
         })
+
+}
+
+function getParentProduct(req,res){
+
+    const component_id = req.params.componentID;
+    const deploy =req.app.get('deploy');
+    ms.setScope()
+        .then(ms.setAdmin(deploy.adminName, deploy.adminPassword, deploy.AdminInterface.address))
+        .then(ms.getProductState(deploy.adminName,component_id))
+        .then(ms.getProductState(deploy.adminName,scope.product[component_id].parentID))
+        .then(function (scope) {
+            util.response.status200(res,{parent: scope.product[scope.product[component_id].parentID]});
+
+        })
+    .catch(function (err) {
+        console.log(""+err);
+
+    })
 
 }
 //#FIXME NOT YET IMPLEMENTED
