@@ -1,0 +1,81 @@
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+}
+
+.App-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+}
+
+.App-intro {
+    font-size: large;
+}
+
+@keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+#form1{
+    color: white;
+    font-family: Century;
+    background-color: rgba(105,105,105,1);
+    width: 35%;
+    margin:auto;
+    padding-top: 15px;
+    padding-bottom: 30px;
+    text-align:left;
+}
+#content input
+{
+    margin-left: 45px;
+    margin-top: 5px;
+    width: 350px;
+    clear: both;
+    height:30px;
+    background-color: #d9d9d9;
+    border: none;
+}
+label{
+    font-size: 10pt;
+    margin-left: 45px;
+}
+#heading-form
+{
+    font-size: 16pt;
+    font-weight: lighter;
+}
+#hr1
+{
+    border:none;
+    width:200px;
+    border-top:1px dotted #ff7a21;
+}
+#btn1
+{
+    width:200px;
+    height:30px;
+    border:2px solid #df5151;
+    background-color: #df5151;
+    color:white;
+    font-size: 10pt;
+}
+#btn1:hover
+{
+    background-color: transparent;
+    color: #df5151;
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+#heading-form,#btn1,#form1
+{
+    font-family: roboto;
+}
