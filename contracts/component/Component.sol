@@ -38,6 +38,8 @@ contract Component is ErrorCodes{
   function addComponent(bytes32 id32, string id, uint quantity) returns (ErrorCodesEnum) {
     // fail if child exists
     if (exists(id32)) return ErrorCodesEnum.EXISTS;
+    // fail if same id as parent exists
+    if (id32 == _id32) return ErrorCodesEnum.RECURSIVE;
     // add
     idToComponentMap[id32] = children.length;
     children.push(subComponent(id32, id, quantity));
