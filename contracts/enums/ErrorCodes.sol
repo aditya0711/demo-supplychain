@@ -8,6 +8,7 @@ contract ErrorCodes {
         SUCCESS,
         ERROR,
         NOT_FOUND,
+        EXISTS,
         USERNAME_EXISTS,
         STOREITEM_EXISTS,
         INSUFFICIENT_BALANCE
