@@ -35,7 +35,7 @@ contract Component is ErrorCodes{
     return idToComponentMap[id32] != 0;
   }
 
-  function addComponent(bytes32 id32, string id, uint quantity) returns (ErrorCodesEnum) {
+  function addSubComponent(bytes32 id32, string id, uint quantity) returns (ErrorCodesEnum) {
     // fail if child exists
     if (exists(id32)) return ErrorCodesEnum.EXISTS;
     // fail if same id as parent exists
