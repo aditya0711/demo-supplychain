@@ -19,6 +19,17 @@ contract ComponentManager is ErrorCodes {
     return idToComponentMap[id32] != 0;
   }
 
+  function hasChild(bytes32 parentId32, bytes32 childId32) returns (ErrorCodesEnum, bool) {
+    // fail if parent or child dont exist
+    if (!exists(parentId32)) return (ErrorCodesEnum.NOT_FOUND, false);
+    if (!exists(childId32)) return (ErrorCodesEnum.NOT_FOUND, false);
+    // check tha parent
+    uint index = idToComponentMap[parentId32];
+    Component parent = components[index];
+    bool result = parent.hasChild(childId32);
+    return (ErrorCodesEnum.SUCCESS, result);
+  }
+
   function createComponent(bytes32 id32, string id, string name) returns (ErrorCodesEnum) {
     // fail if id32 exists
     if (exists(id32)) return ErrorCodesEnum.EXISTS;
