@@ -8,6 +8,12 @@ contract ComponentManager is ErrorCodes {
   Component[] components;
   mapping (bytes32 => uint) idToComponentMap;
 
+  struct subComponent {
+    bytes32 id32;
+    string id;
+    uint quantity;
+  }
+
   /**
   * Constructor
   */
@@ -23,7 +29,7 @@ contract ComponentManager is ErrorCodes {
     // fail if parent or child dont exist
     if (!exists(parentId32)) return (ErrorCodesEnum.NOT_FOUND, false);
     if (!exists(childId32)) return (ErrorCodesEnum.NOT_FOUND, false);
-    // check tha parent
+    // check the parent
     uint index = idToComponentMap[parentId32];
     Component parent = components[index];
     bool result = parent.hasChild(childId32);
@@ -40,15 +46,17 @@ contract ComponentManager is ErrorCodes {
     return ErrorCodesEnum.SUCCESS;
   }
 
-  function addSubComponent(bytes32 parentId32, bytes32 childId32, string childId, uint quantity) returns (ErrorCodesEnum) {
+  function addSubComponent(bytes32 parentId32, bytes32 childId32, uint quantity) returns (ErrorCodesEnum) {
     // fail if parent doesnt exist
     if (!exists(parentId32)) return ErrorCodesEnum.NOT_FOUND;
     // fail if child doesnt exist
     if (!exists(childId32)) return ErrorCodesEnum.NOT_FOUND;
     // add sub component
-    uint index = idToComponentMap[parentId32];
-    Component parent = components[index];
-    return parent.addSubComponent(childId32, childId, quantity);
+    uint indexParent = idToComponentMap[parentId32];
+    Component parent = components[indexParent];
+    uint indexChild = idToComponentMap[childId32];
+    Component child = components[indexChild];
+    return parent.addSubComponent(child, quantity);
   }
 
 

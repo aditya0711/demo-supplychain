@@ -11,7 +11,7 @@ contract Component is ErrorCodes{
 
   struct subComponent {
     bytes32 id32;
-    string id;
+    address adrs;
     uint quantity;
   }
 
@@ -35,21 +35,34 @@ contract Component is ErrorCodes{
     return idToComponentMap[id32] != 0;
   }
 
+  function getId32() returns (bytes32) {
+    return _id32;
+  }
+
   function hasChild(bytes32 childId32) returns (bool) {
     // immediate child
     if (exists(childId32)) return true;
     // recursion
+    bool result;
+    for (uint i = 1; i < children.length; i++) {
+      address childAddress = children[i].adrs;
+      Component child = Component(childAddress);
+      result = child.hasChild(childId32);
+      if (result == true) return true;
+    }
     return false;
   }
 
-  function addSubComponent(bytes32 id32, string id, uint quantity) returns (ErrorCodesEnum) {
+  function addSubComponent(address childAddress, uint quantity) returns (ErrorCodesEnum) {
+    Component child = Component(childAddress);
+    bytes32 id32 = child.getId32();
     // fail if child exists
     if (exists(id32)) return ErrorCodesEnum.EXISTS;
     // fail if same id as parent exists
     if (id32 == _id32) return ErrorCodesEnum.RECURSIVE;
     // add
     idToComponentMap[id32] = children.length;
-    children.push(subComponent(id32, id, quantity));
+    children.push(subComponent(id32, childAddress, quantity));
     return ErrorCodesEnum.SUCCESS;
   }
 }
