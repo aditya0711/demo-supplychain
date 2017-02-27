@@ -51,6 +51,10 @@ contract ComponentManager is ErrorCodes {
     if (!exists(parentId32)) return ErrorCodesEnum.NOT_FOUND;
     // fail if child doesnt exist
     if (!exists(childId32)) return ErrorCodesEnum.NOT_FOUND;
+    // fail if child has the parent as a child (recursive)
+    var (code, result) = hasChild(childId32, parentId32);
+    if (code != ErrorCodesEnum.SUCCESS) return code;
+    if (result == true) return ErrorCodesEnum.RECURSIVE;
     // add sub component
     uint indexParent = idToComponentMap[parentId32];
     Component parent = components[indexParent];
