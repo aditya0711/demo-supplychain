@@ -5,9 +5,9 @@
 import "../enums/ErrorCodes.sol";
 
 contract Component is ErrorCodes{
-  bytes32 _id32;
-  string _id;
-  string _name;
+  bytes32 public _id32;
+  string public _id;
+  string public _name;
 
   struct subComponent {
     bytes32 id32;
