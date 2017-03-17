@@ -26,6 +26,7 @@ contract Component is ErrorCodes{
   function Component(bytes32 id32, string id) {
     _id32 = id32;
     _id = id;
+
     children.length = 1;  // see above note
   }
 
