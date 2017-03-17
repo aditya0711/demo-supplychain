@@ -7,7 +7,6 @@ import "../enums/ErrorCodes.sol";
 contract Component is ErrorCodes{
   bytes32 _id32;
   string _id;
-  string _name;
 
   struct subComponent {
     bytes32 id32;
@@ -24,10 +23,9 @@ contract Component is ErrorCodes{
     otherwise exists() will not work
   */
 
-  function Component(bytes32 id32, string id, string name) {
+  function Component(bytes32 id32, string id) {
     _id32 = id32;
     _id = id;
-    _name = name;
     children.length = 1;  // see above note
   }
 
