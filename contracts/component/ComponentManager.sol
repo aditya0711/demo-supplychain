@@ -36,12 +36,12 @@ contract ComponentManager is ErrorCodes {
     return (ErrorCodesEnum.SUCCESS, result);
   }
 
-  function createComponent(bytes32 id32, string id, string name) returns (ErrorCodesEnum) {
+  function createComponent(bytes32 id32, string id) returns (ErrorCodesEnum) {
     // fail if id32 exists
     if (exists(id32)) return ErrorCodesEnum.EXISTS;
     // add component
     idToComponentMap[id32] = components.length;
-    Component component = new Component(id32, id, name);
+    Component component = new Component(id32, id);
     components.push(component);
     return ErrorCodesEnum.SUCCESS;
   }
