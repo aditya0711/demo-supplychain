@@ -3,7 +3,7 @@ password: '1234'
 timeout: 600000
 contractsPath: ./contracts/
 dataFilename: ./config/demo-data.yaml
-deployFilename: ./config/tester11.deploy.yaml
+deployFilename: ./config/bayar3.deploy.yaml
 
 # WARNING - extra strict syntax
 # DO NOT change the nodes order
@@ -13,4 +13,4 @@ nodes:
     explorerUrl: 'http://bayar3.eastus.cloudapp.azure.com:9000'
     stratoUrl: 'http://bayar3.eastus.cloudapp.azure.com/strato-api'
     blocUrl: 'http://bayar3.eastus.cloudapp.azure.com/bloc'
-    searchUrl: 'http://tester11.eastus.cloudapp.azure.com/cirrus'
+    searchUrl: 'http://bayar3.eastus.cloudapp.azure.com/cirrus'

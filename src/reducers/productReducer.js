@@ -15,6 +15,12 @@ export default function (state = initialState.products, action) {
     case types.GET_LIST_OF_PRODUCTS_SUCCESS:{
       return[...state, action.products];
     }
+    case types.CREATE_PRODUCT_SUCCESS:{
+        return[...state, action.products];
+    }
+    case types.CREATE_PRODUCT_FAILURE:{
+        return[...state, action.products];
+    }
     default:
       return state;
   }

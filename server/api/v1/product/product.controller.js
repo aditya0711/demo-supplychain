@@ -1,6 +1,4 @@
-/**
- * Created by aditya on 3/20/17.
- */
+
 'use strict';
 const ba = require('blockapps-rest');
 const rest = ba.rest;
@@ -8,7 +6,9 @@ const common = ba.common;
 const config = common.config;
 const util = common.util;
 const fsutil = common.fsutil;
-const path = require('path');
+const path = require('path');/**
+ * Created by aditya on 3/20/17.
+ */
 const libPath = './lib';
 const ms = require(`${path.join(process.cwd(), libPath)}/demoapp`)(config.contractsPath); // FIXME move to package
 

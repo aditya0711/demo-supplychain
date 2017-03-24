@@ -17,8 +17,7 @@ export const createProduct = (product) => {
       return response.json()
     })
     .then(json=> {
-      console.log(JSON.stringify(json));
-      return json.data.products;
+      return json;
     })
     .catch(err =>{
       console.log("ERROR in Saga createProduct:  "+ err);
@@ -44,8 +43,7 @@ export const addSubProduct = (subProduct) => {
             return response.json()
         })
         .then(json=> {
-            console.log(JSON.stringify(json));
-            return json.data.products;
+            return json;
         })
         .catch(err =>{
             console.log("ERROR in Saga addSubProduct:  "+ err);

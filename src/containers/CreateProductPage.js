@@ -3,7 +3,7 @@
  */
 import React, { PropTypes, Component } from 'react';
 import {
-    createProductAction
+    createProductAction, createProductSuccessAction
 } from '../actions/productActions';
 
 import { connect } from 'react-redux';
@@ -12,14 +12,12 @@ import '../styles/common.css';
 import uuid from 'node-uuid';
 import { Button, Form, Col, FormControl, FormGroup , ControlLabel, Checkbox} from 'react-bootstrap';
 
-
 class CreateProductPage extends Component{
 
   constructor(){
     super();
     this.handleCreateProduct = this.handleCreateProduct.bind(this);
   }
-
   componentDidMount(){
     this.productIdInput.value = uuid.v1();
     console.log(JSON.stringify(this.props.products));
@@ -30,27 +28,19 @@ class CreateProductPage extends Component{
     var product =
           {
           name                        : this.nameInput.value,
-          description                 : this.descriptionInput.value,
           price                       : this.priceInput.value,
-          manufacturingDateInput      : this.manufacturingDateInput.value,
-          manufacturingLocationInput  : this.manufacturingLocationInput.value,
           productId                   : uuid.v1()
        };
 
     input.push(product);
-    console.log("Product: " + JSON.stringify(input));
     this.props.dispatch(createProductAction(input));
     e.target.reset();
-
   }
 
   render() {
-    // TODO: Render Add Product Page here
     const { products } = this.props;
-
-    var nameInput, descriptionInput, manufacturingDateInput, manufacturingLocationInput, price;
+    var nameInput, price;
     var productIdInput;
-    console.log("Product ID" + JSON.stringify(productIdInput));
     return (<div>
         <div>
              <Form horizontal id="form1" onSubmit={this.handleCreateProduct}>
@@ -59,6 +49,7 @@ class CreateProductPage extends Component{
                   <h2 id="heading-form">Create Product</h2>
                   <hr id="hr1"/>
                   <br/>
+
                         <FormGroup controlId="id"  >
                             <Col componentClass={ControlLabel} sm={3}>
                                 ID
