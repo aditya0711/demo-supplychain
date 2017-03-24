@@ -58,7 +58,7 @@ describe('Product REST API', function() {
             });
     });
 
-    it('Should POST a new product', function(done){
+    it('Should (POST) create a new product', function(done){
         const productId = util.uid('ProductId');
         const name = util.uid('ProductName');
         const price = 100;
@@ -74,8 +74,75 @@ describe('Product REST API', function() {
             .end((err, res) => {
                 assert_noerr(err);
                 assert_apiSuccess(res);
-                console.log("DATA: " + (res) )
+                res.body.should.have.property('data');
+                const data = res.body.data;
+                assert.notStrictEqual(data, undefined, `Data should be defined ${JSON.stringify(res.body, null, 2)}`);
                 done();
             });
     })
-})
+
+    //Setup IDs for parent and child before hand.
+    const parentId = util.uid('parentId');
+    const childId  = util.uid('childId');
+    it('Should (POST) add a Parent Product', function(done) {
+        const parentName = util.uid('parentName');
+        const parentPrice = 100;
+
+        this.timeout(config.timeout);
+        chai.request(server)
+            .post('/api/v1/product/createProduct')
+            .send({
+                'id': parentId,
+                'name': parentName,
+                'price': parentPrice,
+            })
+            .end((err, res) => {
+                assert_noerr(err);
+                assert_apiSuccess(res);
+                res.body.should.have.property('data');
+                const data = res.body.data;
+                assert.notStrictEqual(data, undefined, `Data should be defined ${JSON.stringify(res.body, null, 2)}`);
+                done();
+            });
+    });
+    it('Should (POST) add a Child Product', function(done){
+        const childName = util.uid('childName');
+        const childPrice = 200;
+
+        this.timeout(config.timeout);
+        chai.request(server)
+            .post('/api/v1/product/createProduct')
+            .send({
+                'id'    : childId,
+                'name'  : childName,
+                'price' : childPrice,
+            })
+            .end((err, res) => {
+                assert_noerr(err);
+                assert_apiSuccess(res);
+                res.body.should.have.property('data');
+                const data = res.body.data;
+                assert.notStrictEqual(data, undefined, `Data should be defined ${JSON.stringify(res.body, null, 2)}`);
+                done();
+            });
+    });
+    it('Should (POST) add Child to Parent', function(done){
+
+        this.timeout(config.timeout);
+        chai.request(server)
+            .post('/api/v1/product/addSubProduct')
+            .send({
+                'parentId' : parentId,
+                'childId'  : childId,
+                'quantity' : 711
+            })
+            .end((err, res) => {
+                assert_noerr(err);
+                assert_apiSuccess(res);
+                res.body.should.have.property('data');
+                const data = res.body.data;
+                assert.notStrictEqual(data, undefined, `Data should be defined ${JSON.stringify(res.body, null, 2)}`);
+                done();
+            });
+    });
+});

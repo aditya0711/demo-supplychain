@@ -25,6 +25,7 @@ function createProduct(req, res){
     const body = req.body;
     const method = 'createProduct';
     var products = [];
+
     ms.setScope()
         .then(ms.setAdmin(deploy.adminName, deploy.adminPassword, deploy.AdminInterface.address))
         .then(ms.createProduct(deploy.adminName, body.id, body.name, body.price))

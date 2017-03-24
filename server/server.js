@@ -9,6 +9,7 @@ const common = ba.common;
 const config = common.config;
 const util = common.util;
 const fsutil = common.fsutil;
+const cors = require('cors');
 
 const deploy = fsutil.yamlSafeLoadSync(config.deployFilename, config.apiDebug);
 console.log('Deploy:', deploy);
@@ -21,6 +22,7 @@ app.set('deploy', deploy);
  */
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
 /**
  * Set static assets directory
