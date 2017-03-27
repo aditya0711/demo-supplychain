@@ -43,12 +43,19 @@ Rewards API tests
 `http://localhost:3000/`
 
 ## Implemented
-* create user `/api/v1/users/:username`
-* login `/api/v1/users/validate`
-* get user history `/api/v1/users/history`
-* get user balance `/api/v1/users/balance`
-* reward user `/api/v1/users/reward`
-* redeem user `/api/v1/users/redeem`
-* revoke user `/api/v1/users/revoke`
-* get store items `/api/v1/store`
-* get store item by contract Address `/api/v1/store`
+* create/upload Product user `/api/v1/product/` POST
+* addSubProduct `/api/v1/product/subProduct` POST
+* getProduct `/api/v1/product/:productID` GET
+* getProducts `/api/v1/product/` GET
+
+
+
+## Run React Application
+
+Remove the build folder is present: rm -rf build/
+
+react-scripts build
+
+react-scripts start
+
+Navigate to http://localhost:3000 for the React Application.
