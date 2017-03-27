@@ -1,5 +1,5 @@
 export const createProduct = (product) => {
-  const API_URL_CREATE_PRODUCT = 'http://localhost:3000/api/v1/product/createProduct';
+  const API_URL_CREATE_PRODUCT = 'http://localhost:3000/api/v1/product/';
   var options ={
     method: 'post',
     headers: {
@@ -25,7 +25,7 @@ export const createProduct = (product) => {
 }
 
 export const addSubProduct = (subProduct) => {
-    const API_URL_ADD_SUB_PRODUCT = 'http://localhost:3000/api/v1/product/addSubProduct';
+    const API_URL_ADD_SUB_PRODUCT = 'http://localhost:3000/api/v1/product/subProduct';
     var options ={
         method: 'post',
         headers: {

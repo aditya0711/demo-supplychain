@@ -21,7 +21,7 @@ module.exports = {
 const contractName = 'ProductManager';
 
 /**
- * @api {post} /createProduct Create/Upload a Product
+ * @api {post} / Create/Upload a Product
  * @apiName CreateProduct
  * @apiGroup Product
  *
@@ -40,7 +40,7 @@ const contractName = 'ProductManager';
  * @apiError .
  *
  * @apiErrorExample Error-Response:
- *     HTTP/1.1 500 Forbidden
+ *     HTTP/1.1 500 Error
  *     {
  *       "success": false,
  *       "error": "Error: Product exists: 1addd190-10b1-11e7-beb0-d7f494123a7a2"
@@ -66,7 +66,7 @@ function createProduct(req, res){
 }
 
 /**
- * @api {post} /addSubProduct Add a Sub Product
+ * @api {post} /subProduct Add a Sub Product
  * @apiName AddSubProduct
  * @apiGroup Product
  *
@@ -85,13 +85,13 @@ function createProduct(req, res){
  * @apiError .
  *
  * @apiErrorExample Error-Response:
- *     HTTP/1.1 500 Forbidden
+ *     HTTP/1.1 500 Error
  *     {
  *       "success": false,
  *       "error": "Error: Adding recursive child: 1addd190-10b1-11e7-beb0-c7f494f6a7a2"
  *     }
  * @apiErrorExample Error-Response:
- *     HTTP/1.1 500 Forbidden
+ *     HTTP/1.1 500 Error
  *     {
  *       "success": false,
  *       "error":"Error: Product not found: 1addd190-10b1-11e7-beb0-c7f494f6a7a"
@@ -114,6 +114,7 @@ function addSubProduct(req, res){
             util.response.status500(res, err);
         })
 }
+
 /**
  * @api {get} / Request list of all products
  * @apiName GetProducts

@@ -65,7 +65,7 @@ describe('Product REST API', function() {
 
         this.timeout(config.timeout);
         chai.request(server)
-            .post('/api/v1/product/createProduct')
+            .post('/api/v1/product/')
             .send({
                 'id': productId,
                 'name': name,
@@ -90,7 +90,7 @@ describe('Product REST API', function() {
 
         this.timeout(config.timeout);
         chai.request(server)
-            .post('/api/v1/product/createProduct')
+            .post('/api/v1/product/')
             .send({
                 'id': parentId,
                 'name': parentName,
@@ -111,7 +111,7 @@ describe('Product REST API', function() {
 
         this.timeout(config.timeout);
         chai.request(server)
-            .post('/api/v1/product/createProduct')
+            .post('/api/v1/product/')
             .send({
                 'id'    : childId,
                 'name'  : childName,
@@ -130,7 +130,7 @@ describe('Product REST API', function() {
 
         this.timeout(config.timeout);
         chai.request(server)
-            .post('/api/v1/product/addSubProduct')
+            .post('/api/v1/product/subProduct')
             .send({
                 'parentId' : parentId,
                 'childId'  : childId,
@@ -181,5 +181,38 @@ describe('Product REST API', function() {
     //             done();
     //         });
     // });
+    it('Should (GET) List of Products', function(done){
+
+        this.timeout(config.timeout);
+        chai.request(server)
+            .get('/api/v1/product/')
+            .end((err, res) => {
+                assert_noerr(err);
+                assert_apiSuccess(res);
+                res.body.should.have.property('data');
+                const data = res.body.data;
+                assert.notStrictEqual(data, undefined, `data should be defined ${JSON.stringify(res.body, null, 2)}`);
+                const products = data.products;
+                assert.notStrictEqual(data, undefined, `products should be defined ${JSON.stringify(res.body, null, 2)}`);
+                done();
+            });
+    });
+    it('Should (GET) Product by productId', function(done){
+        this.timeout(config.timeout);
+        chai.request(server)
+            .get('/api/v1/product/' + parentId)
+            .end((err, res) => {
+                assert_noerr(err);
+                assert_apiSuccess(res);
+                res.body.should.have.property('data');
+                const data = res.body.data;
+                assert.notStrictEqual(data, undefined, `data should be defined ${JSON.stringify(res.body, null, 2)}`);
+                const product = data.product;
+                assert.notStrictEqual(data, undefined, `product should be defined ${JSON.stringify(res.body, null, 2)}`);
+                assert.equal(product[0]._id, parentId, 'Product ID');
+                done();
+            });
+    });
+
 
 });
