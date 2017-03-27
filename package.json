@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/blockapps/blockapps-rest-demo#readme",
   "dependencies": {
-    "blockapps-rest": "file:///Work/blockapps/blockapps-rest",
+    "blockapps-rest": "git+https://github.com/blockapps/blockapps-rest#develop",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "nodemon": "^1.11.0"
