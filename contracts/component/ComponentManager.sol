@@ -46,7 +46,7 @@ contract ComponentManager is ErrorCodes {
     return ErrorCodesEnum.SUCCESS;
   }
 
-  function addSubComponent(bytes32 parentId32, bytes32 childId32, uint quantity) returns (ErrorCodesEnum) {
+  function link(bytes32 parentId32, bytes32 childId32, uint quantity) returns (ErrorCodesEnum) {
     // fail if parent doesnt exist
     if (!exists(parentId32)) return ErrorCodesEnum.NOT_FOUND;
     // fail if child doesnt exist
