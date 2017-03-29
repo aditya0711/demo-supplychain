@@ -14,7 +14,7 @@ const ms = require(`${path.join(process.cwd(), libPath)}/demoapp`)(config.contra
 
 module.exports = {
     createProduct : createProduct,
-    addSubProduct : addSubProduct,
+    link : link,
     getProducts : getProducts,
     getProductById : getProductById,
 };
@@ -66,7 +66,7 @@ function createProduct(req, res){
 }
 
 /**
- * @api {post} /subProduct Add a Sub Product
+ * @api {post} /link Link two products
  * @apiName AddSubProduct
  * @apiGroup Product
  *
@@ -98,21 +98,21 @@ function createProduct(req, res){
  *     }
  *
  */
-function addSubProduct(req, res){
+function link(req, res){
     const deploy = req.app.get('deploy');
     const body = req.body;
-    const method = 'addSubComponent';
+    const method = 'link';
 
     ms.setScope()
         .then(ms.setAdmin(deploy.adminName, deploy.adminPassword, deploy.AdminInterface.address))
-        .then(ms.addSubProduct(deploy.adminName, body.parentId, body.childId, body.quantity))
+        .then(ms.link(deploy.adminName, body.parentId, body.childId, body.quantity))
         .then(function(scope){
             var result = scope.contracts[contractName].calls[method];
             util.response.status200(res, result);
         })
         .catch(function(err){
             util.response.status500(res, err);
-        })
+        });
 }
 
 /**

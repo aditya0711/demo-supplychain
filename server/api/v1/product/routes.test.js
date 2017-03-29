@@ -130,7 +130,7 @@ describe('Product REST API', function() {
 
         this.timeout(config.timeout);
         chai.request(server)
-            .post('/api/v1/product/subProduct')
+            .post('/api/v1/product/link')
             .send({
                 'parentId' : parentId,
                 'childId'  : childId,
