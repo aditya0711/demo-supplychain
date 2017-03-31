@@ -18,8 +18,6 @@ module.exports = {
     getProducts : getProducts,
     getProductById : getProductById,
 };
-const contractName = 'ProductManager';
-
 /**
  * @api {post} / Create/Upload a Product
  * @apiName CreateProduct
@@ -49,14 +47,12 @@ const contractName = 'ProductManager';
 function createProduct(req, res){
     const deploy = req.app.get('deploy');
     const body = req.body;
-    const method = 'createProduct';
-    var products = [];
 
     ms.setScope()
         .then(ms.setAdmin(deploy.adminName, deploy.adminPassword, deploy.AdminInterface.address))
         .then(ms.createProduct(deploy.adminName, body.id, body.name, body.price))
         .then(function(scope){
-            var result = scope.contracts[contractName].calls[method];
+            var result = scope.result;
             util.response.status200(res, result);
         })
         .catch(function(err){
@@ -101,13 +97,12 @@ function createProduct(req, res){
 function link(req, res){
     const deploy = req.app.get('deploy');
     const body = req.body;
-    const method = 'link';
 
     ms.setScope()
         .then(ms.setAdmin(deploy.adminName, deploy.adminPassword, deploy.AdminInterface.address))
         .then(ms.link(deploy.adminName, body.parentId, body.childId, body.quantity))
         .then(function(scope){
-            var result = scope.contracts[contractName].calls[method];
+            var result = scope.result;
             util.response.status200(res, result);
         })
         .catch(function(err){
@@ -163,7 +158,6 @@ function getProducts(req, res){
         .then(ms.getProductsQuery(deploy.adminName))
         .then(function(scope){
             var result = scope.query.slice(-1)[0];
-            console.log("RESULT: " + JSON.stringify(scope))
             util.response.status200(res, {products: result});
         })
         .catch(function(err){
@@ -219,7 +213,6 @@ function getProductById(req, res){
         .then(ms.getProductsQuery(deploy.adminName, req.params.id))
         .then(function(scope){
             var result = scope.query.slice(-1)[0];
-
             util.response.status200(res, {product: result});
         })
         .catch(function(err){

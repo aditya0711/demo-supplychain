@@ -77,6 +77,7 @@ describe('Product REST API', function() {
                 res.body.should.have.property('data');
                 const data = res.body.data;
                 assert.notStrictEqual(data, undefined, `Data should be defined ${JSON.stringify(res.body, null, 2)}`);
+                console.log("RESULT------------>" + JSON.stringify(res));
                 done();
             });
     })
@@ -102,6 +103,8 @@ describe('Product REST API', function() {
                 res.body.should.have.property('data');
                 const data = res.body.data;
                 assert.notStrictEqual(data, undefined, `Data should be defined ${JSON.stringify(res.body, null, 2)}`);
+                console.log("RESULT------------>" + JSON.stringify(res));
+
                 done();
             });
     });
@@ -123,6 +126,8 @@ describe('Product REST API', function() {
                 res.body.should.have.property('data');
                 const data = res.body.data;
                 assert.notStrictEqual(data, undefined, `Data should be defined ${JSON.stringify(res.body, null, 2)}`);
+                console.log("RESULT------------>" + JSON.stringify(res));
+
                 done();
             });
     });
@@ -142,6 +147,8 @@ describe('Product REST API', function() {
                 res.body.should.have.property('data');
                 const data = res.body.data;
                 assert.notStrictEqual(data, undefined, `Data should be defined ${JSON.stringify(res.body, null, 2)}`);
+                console.log("RESULT------------>" + JSON.stringify(res));
+
                 done();
             });
     });
@@ -194,6 +201,8 @@ describe('Product REST API', function() {
                 assert.notStrictEqual(data, undefined, `data should be defined ${JSON.stringify(res.body, null, 2)}`);
                 const products = data.products;
                 assert.notStrictEqual(data, undefined, `products should be defined ${JSON.stringify(res.body, null, 2)}`);
+                console.log("RESULT------------>" + JSON.stringify(res));
+
                 done();
             });
     });
@@ -209,6 +218,7 @@ describe('Product REST API', function() {
                 assert.notStrictEqual(data, undefined, `data should be defined ${JSON.stringify(res.body, null, 2)}`);
                 const product = data.product;
                 assert.notStrictEqual(data, undefined, `product should be defined ${JSON.stringify(res.body, null, 2)}`);
+                console.log("RESULT------------>" + JSON.stringify(res));
                 assert.equal(product[0]._id, parentId, 'Product ID');
                 done();
             });
