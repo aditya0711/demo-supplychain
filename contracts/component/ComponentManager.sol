@@ -8,11 +8,11 @@ contract ComponentManager is ErrorCodes {
   Component[] components;
   mapping (bytes32 => uint) idToComponentMap;
 
-  struct subComponent {
-    bytes32 id32;
-    string id;
-    uint quantity;
-  }
+//  struct subComponent {
+//    bytes32 id32;
+//    string id;
+//    uint quantity;
+//  }
 
   /**
   * Constructor
