@@ -1,3 +1,5 @@
 export default {
-  products: []
+    success: null,
+    products: [],
+    message: "initial state"
 };

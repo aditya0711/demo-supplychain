@@ -5,6 +5,9 @@ import React, { PropTypes, Component } from 'react';
 import {
     createProductAction, createProductSuccessAction
 } from '../actions/productActions';
+import
+    CreateProductSuccess
+ from '../components/CreateProductSuccess';
 
 import { connect } from 'react-redux';
 import '../styles/App.css';
@@ -44,10 +47,12 @@ class CreateProductPage extends Component{
     return (<div>
         <div>
              <Form horizontal id="form1" onSubmit={this.handleCreateProduct}>
-
+                <CreateProductSuccess/>
                   <center>
                   <h2 id="heading-form">Create Product</h2>
                   <hr id="hr1"/>
+                      <h1>{this.props.products.success}</h1>
+                      <h1>HELLO</h1>
                   <br/>
 
                         <FormGroup controlId="id"  >
@@ -91,6 +96,8 @@ const mapStateToProps = ({ products }) => ({
 
 CreateProductPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  products: PropTypes.array
+  products: PropTypes.array,
+    product: PropTypes.object
+
 };
 export default connect(mapStateToProps)(CreateProductPage);
