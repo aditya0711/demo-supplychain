@@ -3,7 +3,6 @@
  */
 import React,  {  Component } from 'react';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
 
 class CreateProductSuccess extends Component {
 
