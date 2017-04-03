@@ -145,42 +145,6 @@ describe('Product REST API', function() {
                 done();
             });
     });
-    // it('Should give error when (POST) add same Child to Parent again', function(done){
-    //     this.timeout(config.timeout);
-    //     chai.request(server)
-    //         .post('/api/v1/product/addSubProduct')
-    //         .send({
-    //             'parentId' : parentId,
-    //             'childId'  : childId,
-    //             'quantity' : 711
-    //         })
-    //         .end((err, res) => {
-    //             assert_noerr(err);
-    //             assert_apiError(res)
-    //             res.body.should.have.property('data');
-    //             const error = res.body.error;
-    //             assert.equal(error, 'Error: Sub Product Exists', `Error should be defined ${JSON.stringify(res.body, null, 2)}`);
-    //             done();
-    //         });
-    // });
-    // it('Should give error when (POST) add Parent to Parent again', function(done){
-    //     this.timeout(config.timeout);
-    //     chai.request(server)
-    //         .post('/api/v1/product/addSubProduct')
-    //         .send({
-    //             'parentId' : parentId,
-    //             'childId'  : parentId,
-    //             'quantity' : 711
-    //         })
-    //         .end((err, res) => {
-    //             assert_noerr(err);
-    //             assert_apiError(res)
-    //             res.body.should.have.property('data');
-    //             const error = res.body.error;
-    //             assert.equal(error, 'Error: Adding recursive child: ' + parentId, `Error should be defined ${JSON.stringify(res.body, null, 2)}`);
-    //             done();
-    //         });
-    // });
     it('Should (GET) List of Products', function(done){
 
         this.timeout(config.timeout);

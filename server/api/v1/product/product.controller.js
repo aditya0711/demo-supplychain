@@ -56,8 +56,10 @@ function createProduct(req, res){
             util.response.status200(res, result);
         })
         .catch(function(err){
-            console.log(err);
-            util.response.status500(res, err);
+            if(err.message === 'Product exists: '+ body.id)
+                util.response.status400(res, err.message);
+            else
+                util.response.status500(res, err.message);
         })
 }
 
@@ -106,7 +108,16 @@ function link(req, res){
             util.response.status200(res, result);
         })
         .catch(function(err){
-            util.response.status500(res, err);
+            if(err.message === 'Adding recursive child')
+                util.response.status400(res, err.message);
+            else
+            if(err.message === 'Product not found')
+                util.response.status400(res, err.message);
+            else
+            if(err.message === 'Sub Product Exists')
+                util.response.status400(res, err.message);
+            else
+                util.response.status500(res, err.message);
         });
 }
 
