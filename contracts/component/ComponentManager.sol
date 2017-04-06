@@ -8,12 +8,6 @@ contract ComponentManager is ErrorCodes {
   Component[] components;
   mapping (bytes32 => uint) idToComponentMap;
 
-//  struct subComponent {
-//    bytes32 id32;
-//    string id;
-//    uint quantity;
-//  }
-
   /**
   * Constructor
   */
@@ -62,6 +56,4 @@ contract ComponentManager is ErrorCodes {
     Component child = components[indexChild];
     return parent.addSubComponent(child, quantity);
   }
-
-
 }

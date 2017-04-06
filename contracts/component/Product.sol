@@ -2,23 +2,23 @@ import "./Component.sol";
 
 contract Product is Component {
 
-  string _name;
-  uint   _price;
+  string name;
+  uint price;
 
   function Product(
-      bytes32 id32,
-      string id,
-      string name,
-      uint price) Component(id32, id) {
-    _name = name;
-    _price = price;
+      bytes32 _id32,
+      string _id,
+      string _name,
+      uint _price) Component(_id32, _id) {
+    name = _name;
+    price = _price;
   }
 
   function addSubProduct(address childAddress, uint quantity) returns (ErrorCodesEnum) {
     // validate
     Product childProduct = Product(childAddress);
-    bytes32 id32 = childProduct.getId32();
-    if (exists(id32)) return ErrorCodesEnum.EXISTS;
+    bytes32 _id32 = childProduct.getId32();
+    if (exists(_id32)) return ErrorCodesEnum.EXISTS;
     if (id32 == _id32) return ErrorCodesEnum.RECURSIVE;
     // add
     return addSubComponent(childAddress, quantity);
