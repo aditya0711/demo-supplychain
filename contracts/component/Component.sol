@@ -5,8 +5,8 @@
 import "../enums/ErrorCodes.sol";
 
 contract Component is ErrorCodes{
-  bytes32 _id32;
-  string _id;
+  bytes32 id32;
+  string id;
 
   struct subComponent {
     bytes32 id32;
@@ -23,19 +23,19 @@ contract Component is ErrorCodes{
     otherwise exists() will not work
   */
 
-  function Component(bytes32 id32, string id) {
-    _id32 = id32;
-    _id = id;
+  function Component(bytes32 _id32, string _id) {
+    id32 = _id32;
+    id = _id;
 
     children.length = 1;  // see above note
   }
 
-  function exists(bytes32 id32) returns (bool) {
-    return idToComponentMap[id32] != 0;
+  function exists(bytes32 _id32) returns (bool) {
+    return idToComponentMap[_id32] != 0;
   }
 
   function getId32() returns (bytes32) {
-    return _id32;
+    return id32;
   }
 
   function hasChild(bytes32 childId32) returns (bool) {
@@ -54,14 +54,14 @@ contract Component is ErrorCodes{
 
   function addSubComponent(address childAddress, uint quantity) returns (ErrorCodesEnum) {
     Component child = Component(childAddress);
-    bytes32 id32 = child.getId32();
+    bytes32 _id32 = child.getId32();
     // fail if child exists
-    if (exists(id32)) return ErrorCodesEnum.EXISTS;
+    if (exists(_id32)) return ErrorCodesEnum.EXISTS;
     // fail if same id as parent exists
     if (id32 == _id32) return ErrorCodesEnum.RECURSIVE;
     // add
-    idToComponentMap[id32] = children.length;
-    children.push(subComponent(id32, childAddress, quantity));
+    idToComponentMap[_id32] = children.length;
+    children.push(subComponent(_id32, childAddress, quantity));
     return ErrorCodesEnum.SUCCESS;
   }
 }
