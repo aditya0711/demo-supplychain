@@ -13,7 +13,7 @@ const Promise = common.Promise;
 //   deploy the projects contracts
 // ---------------------------------------------------
 
-const app = require('./app')(config.contractsPath);
+const app = require('./dapp')(config.contractsPath);
 const AI = app.AI;
 assert.isDefined(AI.subContractsNames['ProductManager']);
 
