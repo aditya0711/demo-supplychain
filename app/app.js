@@ -3,11 +3,6 @@ const rest = ba.rest;
 const util = ba.common.util;
 const Promise = ba.common.Promise;
 
-// FIXME move to rest
-function MethodError(contract, method, result) { // FIXME move to rest
-  return new Error('Call to ' + contract + '.' + method + '() returned ' + result);
-}
-
 const productManager = require('../lib/productManager');
 
 // ========== Admin (chain super user) ==========
@@ -19,11 +14,11 @@ function setAdmin(adminName, adminPassword, aiAddress) {
       .then(rest.createUser(adminName, adminPassword))
       .then(getAdminInterface(aiAddress))
       .then(function(scope) {
-        for (var name in AI.subContractsNames) {
+        AI.subContractsNames.map(function (name) {
           if (scope.contracts[name] === undefined) throw new Error('setAdmin: AdminInterface: undefined: ' + name);
           if (scope.contracts[name] === 0) throw new Error('setAdmin: AdminInterface: 0: ' + name);
           if (scope.contracts[name].address == 0) throw new Error('setAdmin: AdminInterface: address 0: ' + name);
-        };
+        });
         return scope;
       });
   }
@@ -59,11 +54,12 @@ function setAdminInterface(adminName, adminPassword) {
 function getAdminInterface(address) {
   rest.verbose('getAdminInterface', {address});
   return function(scope) {
+    const contractName = AI.contractName;
     // if address not passed in, it is in the scope
     if (address === undefined) {
       address = scope.contracts[AI.contractName].address;
+      if (address === undefined) throw('');
     }
-    const contractName = 'AdminInterface';
     return rest.getState(contractName, address)(scope)
       .then(function(scope) {
         for (var name in scope.states[contractName]) {
