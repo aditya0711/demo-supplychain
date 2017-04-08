@@ -50,8 +50,6 @@ describe('Dapp routes', function () {
         assert_apiSuccess(res);
         res.body.should.have.property('data');
         const data = res.body.data;
-        expect(data).to.not.be.empty;
-        expect(data.length).to.be.above(0);
         done();
       });
   });
