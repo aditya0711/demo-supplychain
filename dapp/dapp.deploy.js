@@ -17,7 +17,7 @@ const app = require('./dapp')(config.contractsPath);
 const AI = app.AI;
 assert.isDefined(AI.subContractsNames['ProductManager']);
 
-describe('Demo App - deploy contracts', function() {
+describe('Demo App - deploy contracts', function () {
   this.timeout(900 * 1000);
 
   const scope = {};
@@ -25,20 +25,20 @@ describe('Demo App - deploy contracts', function() {
   const adminPassword = '1234';
 
   // uploading the admin contract and dependencies
-  it('should upload the contracts', function(done) {
+  it('should upload the contracts', function (done) {
     app.setScope(scope)
-      // compile search
+    // compile search
       .then(app.compileSearch())
       // set admin interface
       .then(app.setAdminInterface(adminName, adminPassword))
       // sanity check - get the freshly set admin interface
-      .then(function(scope) {
+      .then(function (scope) {
         const address = scope.contracts[AI.contractName].address;
         scope.contracts[AI.contractName].string = 'removed to save screen space -LS';
         return app.getAdminInterface(address)(scope);
       })
       // write the deployment data to file
-      .then(function(scope) {
+      .then(function (scope) {
         const object = {
           url: config.getBlocUrl(),
           adminName: adminName,
