@@ -4,9 +4,11 @@
 const routes = require('express').Router();
 const users = require('./api/v1/users');
 const store = require('./api/v1/store');
+const products = require('./api/v1/products');
 
 routes.use('/api/v1/users', users);
 routes.use('/api/v1/store', store);
+routes.use('/api/v1/products', products);
 
 /** 
  * Serve the docs for the api
