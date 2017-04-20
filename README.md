@@ -8,8 +8,20 @@
 
 ## Project setup
 
+
 ### Installation
 `npm i`
+
+## Run React Application
+
+Remove the build folder is present: rm -rf build/
+
+react-scripts build
+
+PORT=3001 react-scripts start
+
+Navigate to http://localhost:3001 for the React Application.
+
 
 ### Deployment
 * In the folder `./config`, create a config file for the target Blockapps server
@@ -50,12 +62,3 @@ Rewards API tests
 
 
 
-## Run React Application
-
-Remove the build folder is present: rm -rf build/
-
-react-scripts build
-
-react-scripts start
-
-Navigate to http://localhost:3000 for the React Application.

@@ -4,8 +4,6 @@
   "description": "BlockApps REST Demo App",
   "main": "demoapp.js",
   "scripts": {
-    "react-build": "rm -rf build/ && react-scripts build",
-    "react-start": "react-scripts start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "apidoc -i server/api/v1/ -o doc/ && nodemon server/server.js",
     "start:back": "node server/server.js > stdout.txt 2> stderr.txt &",
