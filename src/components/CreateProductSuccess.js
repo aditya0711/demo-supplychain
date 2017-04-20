@@ -14,6 +14,13 @@ class CreateProductSuccess extends Component {
                 </div>
             )
         }
+        else if(this.props.products.success === false){
+            return (
+                <div>
+                    <h1>Create Product Failed: {this.props.products.error}</h1>
+                </div>
+            )
+        }
         return(
             <div>
             </div>

@@ -38,7 +38,7 @@ export default function (state = initialState, action) {
     case types.CREATE_PRODUCT_FAILURE:{
         return {
           success: false,
-          products: action.products,
+          error: action.error.message,
           message: "create a product failure"
         };
     }
