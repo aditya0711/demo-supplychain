@@ -3,21 +3,69 @@
  */
 import React,  {  Component } from 'react';
 import { connect } from 'react-redux';
+import { Modal, Button } from 'react-bootstrap';
 
 class CreateProductSuccess extends Component {
+
+    constructor(){
+        super();
+        this.state ={ showModal: true }
+        this.close = this.close.bind(this);
+        this.open = this.open.bind(this);
+    }
+    componentDidMount(){
+        //this.setState({ showModal: false });
+    }
+
+    close() {
+        this.setState({ showModal: false });
+        window.location.reload();
+    }
+
+    open() {
+        this.setState({ showModal: true });
+    }
+    // toggleModal(){
+    //     this.setState({ showModal: !this.state.showModal })
+    // }
+
 
     render() {
         if(this.props.products.success === true) {
             return (
                 <div>
-                    <h1>PRODUCT ADDED SUCCESSFULLY</h1>
+                    <Modal show={this.state.showModal} onHide={this.close}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Product Creation</Modal.Title>
+                            </Modal.Header>
+
+                            <Modal.Body>
+                                Product Successfully Created
+                            </Modal.Body>
+
+                            <Modal.Footer>
+                                <Button onClick={this.close}> Close</Button>
+                            </Modal.Footer>
+                    </Modal>
                 </div>
             )
         }
         else if(this.props.products.success === false){
             return (
                 <div>
-                    <h1>Create Product Failed: {this.props.products.error}</h1>
+                            <Modal show={this.state.showModal} onHide={this.close}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Product Creation</Modal.Title>
+                                </Modal.Header>
+
+                                <Modal.Body>
+                                    Create Product Failed: {this.props.products.error}
+                                </Modal.Body>
+
+                                <Modal.Footer>
+                                    <Button onClick={this.close}> Close</Button>
+                                </Modal.Footer>
+                            </Modal>
                 </div>
             )
         }

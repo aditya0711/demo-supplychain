@@ -19,18 +19,21 @@ class CreateProductForm extends Component {
         //console.log(JSON.stringify(this.props.products));
     }
 
+
     handleCreateProduct(e){
         e.preventDefault();
+
         var input = [];
         var product =
             {
                 name                        : this.nameInput.value,
                 price                       : this.priceInput.value,
-                productId                   : uuid.v1()
+                productId                   : this.productIdInput.value
             };
 
         input.push(product);
         this.props.dispatch(createProductAction(input));
+
         e.target.reset();
     }
 
