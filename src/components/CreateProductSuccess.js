@@ -25,10 +25,6 @@ class CreateProductSuccess extends Component {
     open() {
         this.setState({ showModal: true });
     }
-    // toggleModal(){
-    //     this.setState({ showModal: !this.state.showModal })
-    // }
-
 
     render() {
         if(this.props.products.success === true) {

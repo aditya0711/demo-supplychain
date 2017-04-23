@@ -56,7 +56,7 @@ exports.getProducts = (req, res) => {
 /**
  * @api {post} / Create/Upload a Product
  * @apiName CreateProduct
- * @apiGroup Product
+ * @apiGroup Products
  *
  * @apiParam {String} id ID of the Product.
  * @apiParam {String} name Name of the Product.
@@ -67,8 +67,15 @@ exports.getProducts = (req, res) => {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "success": true,
- *       "data": "1"
+ *          "success":true,
+ *          "data":{
+ *              "address":"6bd4671194971b279eaf48ffee3c5f341075ac50",
+ *              "id32":"666531302d323564392d313165372d393735382d633532653062373936646565",
+ *              "children":[],
+ *              "name":"product_test",
+ *              "id":"393efe10-25d9-11e7-9758-c52e0b796dee",
+ *              "price":711
+ *              }
  *     }
  * @apiError .
  *
@@ -90,6 +97,44 @@ exports.createProduct = (req, res) => {
         .then(scope => {
             const product = scope.result;
             util.response.status200(res, product);
+        })
+        .catch(err => {
+            util.response.status500(res, err);
+        });
+}
+
+
+/**
+ * @api {post} /link Link two products
+ * @apiName AddSubProduct
+ * @apiGroup Product
+ *
+ * @apiParam {String} parentId ID of the Parent Product.
+ * @apiParam {String} childId ID of the Child Product.
+ * @apiParam {int} quantity Quantity of the subProduct.
+ *
+ *
+ * @apiSuccess {int} 1 for Successful Addition
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "success": true,
+ *       "data": ['1', true]
+ *     }
+ * @apiError .
+ *
+ */
+exports.link = function(req, res){
+    const deploy = req.app.get('deploy');
+    const body = req.body;
+
+    dapp.setScope()
+        .then(dapp.setAdmin(deploy.adminName, deploy.adminPassword, deploy.AdminInterface.address))
+        .then(dapp.productManager.link(deploy.adminName, body.parentId, body.childId, body.quantity))
+        .then(dapp.productManager.hasChild(deploy.adminName, body.parentId, body.childId))
+        .then(function(scope){
+            var result = scope.result;
+            util.response.status200(res, result);
         })
         .catch(err => {
             util.response.status500(res, err);
