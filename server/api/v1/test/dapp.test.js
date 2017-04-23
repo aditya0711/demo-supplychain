@@ -15,7 +15,7 @@ const dapp = require(`${path.join(process.cwd(), libPath)}/dapp`)(config.contrac
 chai.use(chaiHttp);
 
 
-describe('Dapp routes', function () {
+describe('Dapp Products Routes', function () {
     const userName = util.uid('User');
     const userPassword = "1234";
 
@@ -55,31 +55,6 @@ describe('Dapp routes', function () {
                 done();
             })
     });
-    it('should create a child product', function (done) {
-        this.timeout(config.timeout);
-        var product = {
-            id: util.uid('ProductID'),
-            name: util.uid('ProductName'),
-            price: 711
-        }
-        childId = product.id;
-
-        chai.request(server)
-            .post('/api/v1/products/')
-            .send({
-                id: product.id,
-                name: product.name,
-                price: product.price
-            })
-            .end((err, res) => {
-                assert.apiNoError(err, res);
-                assert.apiSuccess(res);
-                res.body.should.have.property('data');
-                const data = res.body.data;
-                done();
-            })
-    });
-
 });
 
 describe('should test linking sub product to Product', function(){
@@ -111,6 +86,7 @@ describe('should test linking sub product to Product', function(){
                 done();
             })
     });
+
     //Create the Child Product
     before(function(done){
         this.timeout(config.timeout);
@@ -140,7 +116,6 @@ describe('should test linking sub product to Product', function(){
     it('should link a sub product with a product', function(done){
         this.timeout(config.timeout);
         var quantity = 1;
-
         chai.request(server)
             .post('/api/v1/products/link')
             .send({

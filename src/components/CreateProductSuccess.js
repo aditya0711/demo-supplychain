@@ -51,11 +51,11 @@ class CreateProductSuccess extends Component {
                 <div>
                             <Modal show={this.state.showModal} onHide={this.close}>
                                 <Modal.Header closeButton>
-                                    <Modal.Title>Product Creation</Modal.Title>
+                                    <Modal.Title>Error: Product Creation</Modal.Title>
                                 </Modal.Header>
 
                                 <Modal.Body>
-                                    Create Product Failed: {this.props.products.error}
+                                    Error while creating Product: {this.props.products.error}
                                 </Modal.Body>
 
                                 <Modal.Footer>
