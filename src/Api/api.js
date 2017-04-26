@@ -1,6 +1,6 @@
 export const getProductsList = () => {
 
-  const PRODUCT_LIST_API_ENDPOINT = `//localhost:3000/api/v1/products`;
+      const PRODUCT_LIST_API_ENDPOINT = `//localhost:3000/api/v1/products`;
 
   return fetch(PRODUCT_LIST_API_ENDPOINT)
       .then(handleApiError)
@@ -12,9 +12,9 @@ export const getProductsList = () => {
         })
         .then(json => {
         return json.data.map(({ id, name, price }) => ({
-            id,
-            name,
-            price
+            id    : 'sg242',
+            name  : 'name1',
+            price : '420'
         }));
         })
         .catch(function (error) {

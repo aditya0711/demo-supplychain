@@ -9,6 +9,7 @@ const common = ba.common;
 const config = common.config;
 const util = common.util;
 const fsutil = common.fsutil;
+const cors = require('cors');
 
 const deploy = fsutil.yamlSafeLoadSync(config.deployFilename, config.apiDebug);
 console.log('Deploy:', deploy);
@@ -33,7 +34,7 @@ app.use(express.static(path.join(__dirname, '../doc')));
  */
 const routes = require('./routes');
 app.use('/', routes);
-
+app.use(cors);
 
 // get the intended port number, use port 3000 if not provided
 const port = process.env.PORT || 3000;
