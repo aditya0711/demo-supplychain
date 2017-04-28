@@ -22,7 +22,7 @@ const Header = () => (
                 {" | "}
                 <Link to="/" activeClassName="active">Create Product</Link>
                 {" | "}
-                <Link to="/" activeClassName="active">Search</Link>
+                <Link to="/prodDetails" activeClassName="active">Search</Link>
             </nav>
         </div>
     </div>

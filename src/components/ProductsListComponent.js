@@ -6,7 +6,7 @@ import  ProductListSuccess from '../components/ProductListSuccess';
 
 
 const ProductsListComponent = ({products}) => (
-  <div className="col-md-6">
+  <div>
     <h2>Products</h2>
       <ProductListSuccess/>
   </div>

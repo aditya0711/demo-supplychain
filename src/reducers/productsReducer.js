@@ -49,6 +49,13 @@ export default function (state = initialState, action) {
                 message: "create a product failure"
             };
         }
+        case types.SELECTED_PRODUCT:{
+            return {
+                success: false,
+                product: action.product,
+                message: "product selected"
+            };
+        }
         default:
             return state;
     }

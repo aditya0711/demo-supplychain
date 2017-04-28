@@ -4,8 +4,8 @@
   "description": "BlockApps REST Demo App",
   "main": "demoapp.js",
   "scripts": {
-    "react-build" : "rm -rf build/ && react-scripts build",
-    "react-start" : "react-scripts start",
+    "react-build": "rm -rf build/ && react-scripts build",
+    "react-start": "react-scripts start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "apidoc -i server/api/v1/ -o doc/ && nodemon server/server.js",
     "start:back": "node server/server.js > stdout.txt 2> stderr.txt &",
@@ -24,20 +24,21 @@
   "dependencies": {
     "blockapps-rest": "git+https://github.com/blockapps/blockapps-rest#develop",
     "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "nodemon": "^1.11.0",
     "enzyme": "^2.4.1",
     "expect": "latest",
+    "express": "^4.14.0",
     "isomorphic-fetch": "^2.2.1",
     "node-uuid": "^1.4.7",
+    "nodemon": "^1.11.0",
     "pushstate-server": "latest",
+    "qrcode.react": "^0.7.0",
     "react": "^15.2.1",
+    "react-bootstrap": "^0.31.0",
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.6.0",
     "redux": "^3.5.2",
     "redux-saga": "^0.11.0"
-
   },
   "devDependencies": {
     "apidoc": "^0.16.1",

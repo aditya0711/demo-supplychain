@@ -8,7 +8,7 @@ import  ProductListComponent from '../components/ProductsListComponent';
 import '../styles/style.css';
 
 
-export class ProductsListPage extends Component {s
+export class ProductsListPage extends Component {
   constructor() {
     super();
   }
@@ -20,7 +20,6 @@ export class ProductsListPage extends Component {s
   render() {
     return (
         <div>
-
           <ProductListComponent/>
         </div>
     );
