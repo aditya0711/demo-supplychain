@@ -4,11 +4,13 @@
 
 import React,  {  Component } from 'react';
 import { connect } from 'react-redux';
-import {Pagination, Col, Thumbnail, Grid, Label, Button} from 'react-bootstrap'
+import {Checkbox, Col, Thumbnail, Form, Label, Button} from 'react-bootstrap'
 import QRCode from 'qrcode.react';
 import { selectProduct } from '../actions/productListActions';
 
-
+const divStyle = {
+    fontSize: '18pt'
+};
 class ProductListSuccess extends Component {
 
     constructor(){
@@ -16,35 +18,34 @@ class ProductListSuccess extends Component {
         this.handleSelectProduct = this.handleSelectProduct.bind(this);
     }
 
-    handleSelectProduct(e){
+    handleSelectProduct(row, e){
         e.preventDefault();
-        console.log("PRODUCT: " + (e))
-        this.props.dispatch(selectProduct(e));
+        console.log("PRODUCT: " + JSON.stringify(row))
+        this.props.dispatch(selectProduct(row));
+        window.location.assign('/prodDetails');
     }
 
+
     render() {
+        var selectedProduct;
         if(this.props.products.success === true) {
             return (
                 <div>
-                    <br/>
                     {this.props.products.products.slice(1,50).map(function(row, item){
                         return (
                             <div>
-                                <Col xs={6} md={2}>
+                                <Col xs={6} md={4}>
                                         <Thumbnail alt="Serialized">
-                                            <QRCode value={JSON.stringify(row)}/>
-                                            <p><a href="/prodDetails" >{row._name}</a></p>
+                                            <p style={divStyle}> {row._name}</p>
                                             <p>$ {row._price}</p>
                                             <br/>
-                                            <p>
-                                                <Button bsStyle="primary" >Info</Button>&nbsp;
-                                                <Button bsStyle="default" onClick={index => ProductListSuccess.dispatch(selectProduct(row))} >BOM</Button>
-                                            </p>
+                                            <p><Button bsStyle="warning" >BOM</Button>&nbsp;
+                                            <Button bsStyle="success" onClick={e => this.handleSelectProduct(row, e)} >Info</Button></p>
                                         </Thumbnail>
                                 </Col>
                             </div>
                         );
-                    })}
+                    }, this)}
                 </div>
             )
         }
@@ -62,8 +63,7 @@ class ProductListSuccess extends Component {
     }
 }
 ProductListSuccess.propTypes = {
-    products : React.PropTypes.object,
-    handleSelectProduct: React.PropTypes.func
+    products : React.PropTypes.object
 };
 function mapStateToProps({products}) {
     return {

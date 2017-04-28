@@ -15,12 +15,14 @@ export class ProductDetailsPage extends Component {s
     }
 
     componentDidMount() {
-        this.props.dispatch(getProductsList());
+        //this.props.dispatch(getProductsList());
+
     }
 
     render() {
         return (
             <div>
+                <p>{JSON.stringify(localStorage.getItem('product'))}</p>
                 <ProductDetailsComponent id={this.props.products.products[1]}/>
             </div>
     );
