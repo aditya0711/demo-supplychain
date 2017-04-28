@@ -11,7 +11,7 @@ import '../styles/style.css';
 export class ProductDetailsPage extends Component {s
     constructor() {
         super();
-        this.state = { products: this.p};
+        this.state = { product: {}};
     }
 
     componentDidMount() {
@@ -21,8 +21,7 @@ export class ProductDetailsPage extends Component {s
     render() {
         return (
             <div>
-                <h1>Product Details</h1>
-                <ProductDetailsComponent/>
+                <ProductDetailsComponent id={this.props.products.products[1]}/>
             </div>
     );
     }

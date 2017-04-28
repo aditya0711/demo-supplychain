@@ -27,7 +27,7 @@ class ProductListSuccess extends Component {
             return (
                 <div>
                     <br/>
-                    {this.props.products.products.map(function(row, item){
+                    {this.props.products.products.slice(1,50).map(function(row, item){
                         return (
                             <div>
                                 <Col xs={6} md={2}>
@@ -37,11 +37,8 @@ class ProductListSuccess extends Component {
                                             <p>$ {row._price}</p>
                                             <br/>
                                             <p>
-                                                <Button bsStyle="primary" onClick={function handleSelectProduct(){
-                                                    console.log("PRODUCT:" + JSON.stringify(row));
-                                                    //super.props.dispatch(selectProduct(row))
-                                                }}>Info</Button>
-                                                <Button bsStyle="default">BOM</Button>
+                                                <Button bsStyle="primary" >Info</Button>&nbsp;
+                                                <Button bsStyle="default" onClick={index => ProductListSuccess.dispatch(selectProduct(row))} >BOM</Button>
                                             </p>
                                         </Thumbnail>
                                 </Col>
@@ -64,10 +61,14 @@ class ProductListSuccess extends Component {
         )
     }
 }
-
+ProductListSuccess.propTypes = {
+    products : React.PropTypes.object,
+    handleSelectProduct: React.PropTypes.func
+};
 function mapStateToProps({products}) {
     return {
-        products: products
+        products: products,
+
     }
 }
 
