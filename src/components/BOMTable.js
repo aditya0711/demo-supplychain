@@ -6,35 +6,36 @@ import React, { PropTypes } from 'react';
 import QRCode from 'qrcode.react';
 import {Row, Col, Thumbnail, Grid, Label, Table} from 'react-bootstrap'
 
-const ProductDetailsHistoryTable = ({info}) => (
+
+const BOMTable = ({info}) => (
     <div>
         <Table responsive bordered>
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Step</th>
-                    <th>Owner</th>
-                    <th>Date Received</th>
+                    <th>Address</th>
+                    <th>Quantity</th>
+                    <th>Product ID</th>
                 </tr>
             </thead>
             <tbody>
-                {info.map(function(item, iterator){
-                    return (
-                        <tr>
-                            <td>{iterator + 1}</td>
-                            <td>{item.id32}</td>
-                            <td>{item.adrs}</td>
-                            <td>{item.quantity}</td>
-                        </tr>
-                    )
-                }, this)
-                }
+            {info.map(function(item, iterator){
+                return (
+                    <tr>
+                        <td>{iterator + 1}</td>
+                        <td>{item.id32}</td>
+                        <td>{item.adrs}</td>
+                        <td>{item.quantity}</td>
+                    </tr>
+                )
+            }, this)
+            }
             </tbody>
         </Table>
     </div>
 );
 
-ProductDetailsHistoryTable.propTypes = {
+BOMTable.propTypes = {
     products : PropTypes.object,
     info : PropTypes.array,
     id32 : PropTypes.string,
@@ -42,10 +43,10 @@ ProductDetailsHistoryTable.propTypes = {
     quantity: PropTypes.string,
     item : PropTypes.object
 };
-ProductDetailsHistoryTable.defaultProps = {
+BOMTable.defaultProps = {
     info : [{ id32: 'abcdefgh192837465', adrs: 'abcdefgh192837465', quantity: '123' }],
     item : { id32: 'abcdefgh192837465', adrs: 'abcdefgh192837465', quantity: '123' },
     iterator: 1
 }
 
-export default ProductDetailsHistoryTable;
+export default BOMTable;
