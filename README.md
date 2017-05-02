@@ -38,11 +38,11 @@ To run in the background run
 
 Smart contract tests
 
-`npm test-contracts`
+`npm run test-contracts`
 
 Rewards API tests
 
-`npm test-api`
+`npm run test-api`
 
 ## View API documentation
 `http://localhost:3000/`
