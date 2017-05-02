@@ -2,6 +2,7 @@
 /doc
 config.yaml
 deploy.yaml
+config/*.deploy.yaml
 
 # Logs
 logs

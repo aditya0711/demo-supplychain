@@ -19,7 +19,6 @@
 
 * In the folder `./config`, create a config file for the target Blockapps server
 * Name the file $YOUR_NODE$.config.yaml
-* Do the same for $YOUR_NODE$.deploy.yaml
 * Deploy to $YOUR_NODE$
 
   `NODE=$YOUR_NODE$ npm run deploy`
