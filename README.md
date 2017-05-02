@@ -3,8 +3,6 @@
 ## Project dependecies
 * `node v5`
 * `npm v3`
-* `mocha version 2.5.3`
-* `apidoc -g` Needs to be globally installed
 
 ## Project setup
 
@@ -12,6 +10,13 @@
 `npm i`
 
 ### Deployment
+
+#### localhost
+
+  `NODE=localhost npm run deploy`
+
+#### remote
+
 * In the folder `./config`, create a config file for the target Blockapps server
 * Name the file $YOUR_NODE$.config.yaml
 * Do the same for $YOUR_NODE$.deploy.yaml
@@ -33,11 +38,11 @@ To run in the background run
 
 Smart contract tests
 
-`mocha lib/test/`
+`npm test-contracts`
 
 Rewards API tests
 
-`mocha server/api/v1/test`
+`npm test-api`
 
 ## View API documentation
 `http://localhost:3000/`

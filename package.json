@@ -7,9 +7,11 @@
     "react-build": "rm -rf build/ && react-scripts build",
     "react-start": "react-scripts start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "apidoc -i server/api/v1/ -o doc/ && nodemon server/server.js",
+    "start": "./node_modules/apidoc/bin/apidoc -i server/api/v1/ -o doc/ && nodemon server/server.js",
     "start:back": "node server/server.js > stdout.txt 2> stderr.txt &",
-    "deploy": "cp config/$NODE.config.yaml config.yaml && ./node_modules/mocha/bin/mocha lib/deploy.test.js -b && ./node_modules/mocha/bin/mocha lib/test/setup.test.js && cp config/$NODE.deploy.yaml deploy.yaml"
+    "deploy": "cp config/$NODE.config.yaml config.yaml && ./node_modules/mocha/bin/mocha lib/deploy.test.js -b && ./node_modules/mocha/bin/mocha lib/test/setup.test.js && cp config/$NODE.deploy.yaml deploy.yaml",
+    "test-contracts": "./node_modules/mocha/bin/mocha lib/test/",
+    "test-api": "./node_modules/mocha/bin/mocha server/api/v1/test"
   },
   "repository": {
     "type": "git",
@@ -22,8 +24,10 @@
   },
   "homepage": "https://github.com/blockapps/blockapps-rest-demo#readme",
   "dependencies": {
+    "apidoc": "^0.16.1",
     "blockapps-rest": "git+https://github.com/blockapps/blockapps-rest#develop",
     "body-parser": "^1.15.2",
+    "cors": "^2.8.3",
     "enzyme": "^2.4.1",
     "expect": "latest",
     "express": "^4.14.0",

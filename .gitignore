@@ -1,3 +1,8 @@
+# generated stuff
+/doc
+config.yaml
+deploy.yaml
+
 # Logs
 logs
 *.log
