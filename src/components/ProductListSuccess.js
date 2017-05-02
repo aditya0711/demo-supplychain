@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import {Checkbox, Col, Thumbnail, Form, Label, Button} from 'react-bootstrap'
 import QRCode from 'qrcode.react';
 import { selectProduct } from '../actions/productListActions';
+import { browserHistory } from 'react-router'
 
 const divStyle = {
     fontSize: '18pt'
@@ -22,7 +23,8 @@ class ProductListSuccess extends Component {
         e.preventDefault();
         console.log("PRODUCT: " + JSON.stringify(row))
         this.props.dispatch(selectProduct(row));
-        window.location.assign('/prodDetails');
+        //window.location.assign('/prodDetails');
+        browserHistory.push('/prodDetails')
     }
 
 

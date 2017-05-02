@@ -14,8 +14,8 @@ const BOMTable = ({info}) => (
                 <tr>
                     <th>#</th>
                     <th>Address</th>
-                    <th>Quantity</th>
                     <th>Product ID</th>
+                    <th>Quantity</th>
                 </tr>
             </thead>
             <tbody>

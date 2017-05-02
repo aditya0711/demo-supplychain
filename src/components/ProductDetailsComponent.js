@@ -3,7 +3,7 @@
  */
 import React, { PropTypes, Component } from 'react';
 import QRCode from 'qrcode.react';
-import {Panel, Row, Col, Thumbnail, Grid, Label, Button, Modal, DropdownButton, MenuItem} from 'react-bootstrap'
+import {Panel, Row, Col, ButtonGroup, Grid, Label, Button, Modal, DropdownButton, MenuItem} from 'react-bootstrap'
 import ProductDetailsHistoryTable from '../components/ProductDetailsHistoryTable';
 import BOMTable from '../components/BOMTable';
 import ManageBOM from '../components/ManageBOM';
@@ -81,13 +81,19 @@ const ProductDetailsComponent = ({context, product}) =>{
                             </Modal.Header>
 
                             <Modal.Body>
-                                <DropdownButton >
-                                    <MenuItem eventKey="1">Action</MenuItem>
-                                    <MenuItem eventKey="2">Another action</MenuItem>
-                                    <MenuItem eventKey="3" active>Active Item</MenuItem>
-                                    <MenuItem divider />
-                                    <MenuItem eventKey="4">Separated link</MenuItem>
-                                </DropdownButton>
+                                <ButtonGroup>
+
+                                    <DropdownButton title="Select a Sub Product" id="dropdown-size-medium">
+                                        <MenuItem eventKey="1">Action</MenuItem>
+                                        <MenuItem eventKey="2">Another action</MenuItem>
+                                        <MenuItem eventKey="3" active>Active Item</MenuItem>
+                                        <MenuItem divider />
+                                        <MenuItem eventKey="4">Separated link</MenuItem>
+                                    </DropdownButton>
+                                    <Button bsStyle="primary">LINK</Button>
+                                </ButtonGroup>
+                                <br/><br/><br/>
+                                <BOMTable/>
                             </Modal.Body>
 
                             <Modal.Footer>

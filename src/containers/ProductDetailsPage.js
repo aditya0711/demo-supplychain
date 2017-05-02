@@ -13,7 +13,7 @@ const p = {
     "_id":"ID_1993_90901914",
     "_name":"NAME_1993_90901914",
     "children":[
-        {"id32":"0000000000000000000000000000000000000000000000000000000000000000",
+        {   "id32":"0000000000000000000000000000000000000000000000000000000000000000",
             "adrs":"0000000000000000000000000000000000000000",
             "quantity":"0"}
     ],
@@ -25,7 +25,8 @@ const p = {
 export class ProductDetailsPage extends Component {
     constructor() {
         super();
-        this.state = { product: p , showModal: false};
+        console.log("CADASDASDASDSADAS: " + JSON.stringify(this.props.products))
+        this.state = { product: this.props.products , showModal: false};
         this.close = this.close.bind(this);
         this.open = this.open.bind(this);
     }
