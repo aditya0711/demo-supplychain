@@ -5,9 +5,9 @@
   "main": "demoapp.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "apidoc -i server/api/v1/ -o doc/ && nodemon server/server.js",
+    "start": "react-scripts start",
     "start:back": "node server/server.js > stdout.txt 2> stderr.txt &",
-    "deploy": "cp config/bayar3.config.yaml config.yaml && mocha lib/deploy.test.js -b &&mocha lib/test/setup.test.js && cp config/bayar3.deploy.yaml deploy.yaml"  },
+    "deploy": "cp config/40.71.192.229.config.yaml config.yaml && mocha lib/deploy.test.js -b &&mocha lib/test/setup.test.js && cp config/40.71.192.229.deploy.yaml deploy.yaml"  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/blockapps/blockapps-rest-demo.git"

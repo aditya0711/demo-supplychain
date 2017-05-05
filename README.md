@@ -23,6 +23,14 @@ PORT=3001 react-scripts start
 Navigate to http://localhost:3001 for the React Application.
 
 
+
+### Deployment Charlie Style
+* Open 2 terminals, `A` and `B` in the project root
+* run `node server/server.js` in terminal `A`
+* run `react-scripts start` in terminal `B`
+
+App should now be working
+
 ### Deployment
 * In the folder `./config`, create a config file for the target Blockapps server
 * Name the file $YOUR_NODE$.config.yaml
@@ -59,6 +67,3 @@ Rewards API tests
 * addSubProduct `/api/v1/product/subProduct` POST
 * getProduct `/api/v1/product/:productID` GET
 * getProducts `/api/v1/product/` GET
-
-
-
