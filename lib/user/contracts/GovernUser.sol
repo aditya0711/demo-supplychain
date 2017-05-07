@@ -1,6 +1,6 @@
 import "./GUser.sol";
-import "../enums/GovernUserStateEnum.sol";
-import "../enums/GovernUserRoleEnum.sol";
+import "./GovernUserStateEnum.sol";
+import "./GovernUserRoleEnum.sol";
 
 /**
  * Govern User data contract

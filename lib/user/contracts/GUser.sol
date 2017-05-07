@@ -1,10 +1,10 @@
-import "../enums/ErrorCodes.sol";
+import "../../common/ErrorCodesEnum.sol";
 import "./Version.sol";
 
 /**
  * User data contract
  */
-contract GUser is ErrorCodes, Version {
+contract GUser is ErrorCodesEnum, Version {
   string public username;
   bytes32 public pwHash;
 
