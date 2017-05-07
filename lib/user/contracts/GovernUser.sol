@@ -1,16 +1,16 @@
-import "./GUser.sol";
+import "./User.sol";
 import "./GovernUserStateEnum.sol";
 import "./GovernUserRoleEnum.sol";
 
 /**
  * Govern User data contract
  */
-contract GovernUser is GUser, GovernUserStateEnum, GovernUserRoleEnum {
+contract GovernUser is User, GovernUserStateEnum, GovernUserRoleEnum {
   GovernUserRole public role;
   GovernUserState public state;
 
   function GovernUser(string _username, bytes32 _pwHash, GovernUserRole _role, GovernUserState _state)
-           GUser(_username, _pwHash) {
+           User(_username, _pwHash) {
     role = _role;
     state = _state;
     version = 2;
