@@ -1,5 +1,5 @@
 import "../../common/ErrorCodesEnum.sol";
-import "./Version.sol";
+import "../../common/Version.sol";
 
 /**
  * User data contract

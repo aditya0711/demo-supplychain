@@ -2,6 +2,7 @@ apiDebug: true
 password: '1234'
 timeout: 600000
 contractsPath: ./contracts/
+libPath: ./lib
 dataFilename: ./config/demo-data.yaml
 deployFilename: ./config/192.deploy.yaml
 
