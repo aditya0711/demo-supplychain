@@ -20,6 +20,10 @@ contract GovernUser is User, GovernUserStateEnum, GovernUserRoleEnum {
     role = _role;
   }
 
+  function getState() returns (GovernUserState) {
+    return state;
+  }
+
   function setState(GovernUserState _state) {
     state = _state;
   }
