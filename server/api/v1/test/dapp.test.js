@@ -134,4 +134,21 @@ describe('should test linking sub product to Product', function(){
                 done();
             })
     })
+
+describe('Dapp routes', function () {
+  const userName = util.uid('User');
+  const userPassword = "1234";
+
+  it('should get all product', function (done) {
+    this.timeout(config.timeout);
+    chai.request(server)
+      .get('/api/v1/products')
+      .end((err, res) => {
+        assert.apiNoError(err, res);
+        assert.apiSuccess(res);
+        res.body.should.have.property('data');
+        const data = res.body.data;
+        done();
+      });
+  });
 });

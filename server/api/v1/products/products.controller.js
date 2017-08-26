@@ -140,3 +140,16 @@ exports.link = function(req, res){
             util.response.status500(res, err);
         });
 }
+exports.getProducts = (req, res) => {
+  const deploy = req.app.get('deploy');
+  dapp.setScope()
+    .then(dapp.setAdmin(deploy.adminName, deploy.adminPassword, deploy.AdminInterface.address))
+    .then(dapp.productManager.getProducts())
+    .then(scope => {
+      const products = scope.result;
+      util.response.status200(res, products);
+    })
+    .catch(err => {
+      util.response.status500(res, err);
+    });
+}

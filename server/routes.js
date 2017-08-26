@@ -9,6 +9,11 @@ const product = require('./api/v1/products');
 routes.use('/api/v1/users', users);
 routes.use('/api/v1/store', store);
 routes.use('/api/v1/products', product);
+const products = require('./api/v1/products');
+
+routes.use('/api/v1/users', users);
+routes.use('/api/v1/store', store);
+routes.use('/api/v1/products', products);
 
 /**
  * Serve the docs for the api
