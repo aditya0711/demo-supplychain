@@ -1,38 +1,23 @@
 pipeline {
     agent any
-    environment {
-        CI = 'true'
-    }
     stages {
-        stage('Build') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh './jenkins/scripts/test.sh'
-            }
-        }
+       stage('Initialize') {
+         steps {
+           sh 'echo Building ${BRANCH_NAME}'
+         }
+       }
         stage('Deliver for development') {
-            when {
-                branch 'development' 
-            }
-            steps {
-                sh './jenkins/scripts/deliver-for-development.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
-            }
+                   when {
+                       branch 'development' 
+                   }
+                   steps {
+                      checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Gitlab_Aditya', url: 'https://gitlab.com/espxplayer/esp-playerplugin.git']]])        }
+                      sh 'npm run build-dev'
+                      azureUpload storageCredentialId: 'espxmediastaticdev_key1', storageType: 'blobstorage', containerName: 'lib', filesPath: 'player/**/**.js.br', blobProperties: [contentType: 'application/javascript', contentEncoding: 'br']
+                      azureUpload storageCredentialId: 'espxmediastaticdev_key1', storageType: 'blobstorage', containerName: 'lib', filesPath: 'player/**/**.js.gz', blobProperties: [contentType: 'application/javascript', contentEncoding: 'gzip']
+                      azureUpload storageCredentialId: 'espxmediastaticdev_key1', storageType: 'blobstorage', containerName: 'lib', filesPath: 'player/**/**.js', blobProperties: [contentType: 'application/javascript', contentEncoding: '']
+                      cleanWs deleteDirs: true, patterns: [[pattern: '**/node_modules', type: 'EXCLUDE'], [pattern: '**/src', type: 'INCLUDE'], [pattern: '**/base', type: 'INCLUDE']]
+                   }
         }
-        stage('Deploy for production') {
-            when {
-                branch 'production'  
-            }
-            steps {
-                sh './jenkins/scripts/deploy-for-production.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
-            }
-        }
-    }
+              
 }
