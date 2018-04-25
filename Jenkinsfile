@@ -20,5 +20,5 @@ pipeline {
                cleanWs deleteDirs: true, patterns: [[pattern: '**/node_modules', type: 'EXCLUDE'], [pattern: '**/src', type: 'INCLUDE'], [pattern: '**/base', type: 'INCLUDE']]
             }
         }
-    }
+   
 }
